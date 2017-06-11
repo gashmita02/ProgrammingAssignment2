@@ -14,8 +14,7 @@ makeCacheMatrix <- function(x = matrix()) {
       
         setinverse <- function(inverse) inv <<- inverse  ## assigns value of inv in parent environment
         getinverse <- function() inv                     ## gets the value of inv where called
-        list(set = set, get = get, setinverse = setinverse, getinverse = getinverse)  ## you need this in order to refer 
-                                                                                      ## to the functions with the $ operator
+        list(set = set, get = get, setinverse = setinverse, getinverse = getinverse)  ##refer to the functions with the $ operator
 }
 
 
@@ -25,8 +24,8 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
   inv <- x$getInverse()
-  if (!is.null(inv)) {
-    message("getting cached data")
+  if (!is.null(inv)) {             # check for null
+    message("getting cached data") #message to be displayed
     return(inv)
   }
   mat <- x$get()
